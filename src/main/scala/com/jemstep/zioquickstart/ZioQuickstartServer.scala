@@ -10,7 +10,7 @@ import org.http4s.server.middleware.Logger
 import fs2.Stream
 import scala.concurrent.ExecutionContext.global
 
-object ZioquickstartServer {
+object ZioQuickstartServer {
 
   def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, Nothing] = {
     for {
@@ -23,8 +23,8 @@ object ZioquickstartServer {
       // want to extract a segments not checked
       // in the underlying routes.
       httpApp = (
-        ZioquickstartRoutes.helloWorldRoutes[F](helloWorldAlg) <+>
-        ZioquickstartRoutes.jokeRoutes[F](jokeAlg)
+        ZioQuickstartRoutes.helloWorldRoutes[F](helloWorldAlg) <+>
+        ZioQuickstartRoutes.jokeRoutes[F](jokeAlg)
       ).orNotFound
 
       // With Middlewares in place
